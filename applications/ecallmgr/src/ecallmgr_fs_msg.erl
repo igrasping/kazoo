@@ -81,7 +81,7 @@ start_link(Node, Options) ->
 %% @end
 %%--------------------------------------------------------------------
 init([Node, Options]) ->
-    put(callid, Node),
+    kz_util:put_callid(Node),
     lager:debug("starting new ecallmgr msg process"),
     gproc:reg({'p', 'l', 'fs_msg'}),
     gen_server:cast(self(), 'bind_to_msg_events'),

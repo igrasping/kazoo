@@ -265,7 +265,7 @@ ensure_contact_user(OriginalContact, Username, Realm) ->
 %% @end
 %%--------------------------------------------------------------------
 init([Node, Options]) ->
-    put(callid, Node),
+    kz_util:put_callid(Node),
     lager:debug("starting new ecallmgr notify process"),
     gproc:reg({'p', 'l', 'fs_notify'}),
     {'ok', #state{node=Node, options=Options}}.
