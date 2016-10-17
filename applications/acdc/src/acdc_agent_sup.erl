@@ -7,7 +7,6 @@
 %%%   James Aimonetti
 %%%-------------------------------------------------------------------
 -module(acdc_agent_sup).
-
 -behaviour(supervisor).
 
 -include("acdc.hrl").
