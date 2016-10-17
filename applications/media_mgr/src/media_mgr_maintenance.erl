@@ -12,6 +12,10 @@
 
 -include("media.hrl").
 
+-spec prompt_url(ne_binary()) -> 'ok'.
+-spec prompt_url(ne_binary(), ne_binary()) -> 'ok'.
+-spec prompt_url(ne_binary(), ne_binary(), ne_binary()) -> 'ok'.
+
 prompt_url(PromptId) ->
     AccountId = ?KZ_MEDIA_DB,
     Language = kz_media_util:default_prompt_language(),
@@ -22,5 +26,6 @@ prompt_url(PromptId, AccountId) ->
     prompt_url(PromptId, AccountId, Language).
 
 prompt_url(PromptId, AccountId, Language) ->
-    {'ok', URL} = kz_media_url:playback(<<"prompt://", AccountId/binary, "/", PromptId/binary, "/", Language/binary>>, kz_json:new()),
+    Path = <<"prompt://", AccountId/binary, "/", PromptId/binary, "/", Language/binary>>,
+    {'ok', URL} = kz_media_url:playback(Path, kz_json:new()),
     io:format(" URL for ~s/~s/~s: ~s~n", [AccountId, PromptId, Language, URL]).
