@@ -51,13 +51,9 @@ start_link(Node, Options) ->
 %% @private
 %% @doc
 %% Initializes the server
-%%
-%% @spec init(Args) -> {ok, State} |
-%%                     {ok, State, Timeout} |
-%%                     ignore |
-%%                     {stop, Reason}
 %% @end
 %%--------------------------------------------------------------------
+-spec init([atom() | kz_proplist()]) -> {'ok', state()}.
 init([Node, Options]) ->
     kz_util:put_callid(Node),
     lager:info("starting new fs config listener for ~s", [Node]),

@@ -74,6 +74,7 @@ handle_media_req(JObj, _Props) ->
 %%                     {stop, Reason}
 %% @end
 %%--------------------------------------------------------------------
+-spec init([]) -> {'ok', state()}.
 init([]) ->
     lager:debug("starting media_mgr listener"),
     {'ok', #state{}}.

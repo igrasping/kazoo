@@ -80,6 +80,7 @@ start_link(Node, Options) ->
 %% Initializes the server
 %% @end
 %%--------------------------------------------------------------------
+-spec init([atom() | kz_proplist()]) -> {'ok', state()}.
 init([Node, Options]) ->
     kz_util:put_callid(Node),
     lager:debug("starting new ecallmgr msg process"),

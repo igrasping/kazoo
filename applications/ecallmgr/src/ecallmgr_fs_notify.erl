@@ -264,6 +264,7 @@ ensure_contact_user(OriginalContact, Username, Realm) ->
 %% Initializes the server
 %% @end
 %%--------------------------------------------------------------------
+-spec init([atom() | kz_proplist()]) -> {'ok', state()}.
 init([Node, Options]) ->
     kz_util:put_callid(Node),
     lager:debug("starting new ecallmgr notify process"),

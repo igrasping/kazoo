@@ -350,6 +350,7 @@ id(Srv) ->
 %%                     {stop, Reason}
 %% @end
 %%--------------------------------------------------------------------
+-spec init([atom() | agent() | ne_binaries()]) -> {'ok', state()}.
 init([Supervisor, Agent, Queues]) ->
     AgentId = agent_id(Agent),
     kz_util:put_callid(AgentId),

@@ -293,13 +293,9 @@ fetch_timeout(_Node) ->
 %% @private
 %% @doc
 %% Initializes the server
-%%
-%% @spec init(Args) -> {ok, State} |
-%%                     {ok, State, Timeout} |
-%%                     ignore |
-%%                     {stop, Reason}
 %% @end
 %%--------------------------------------------------------------------
+-spec init([atom() | kz_proplist()]) -> {'ok', state()}.
 init([Node, Options]) ->
     kz_util:put_callid(Node),
     process_flag('priority', 'high'), %% Living dangerously!
@@ -308,7 +304,6 @@ init([Node, Options]) ->
     sync_channels(self()),
     PidRef = run_start_cmds(Node, Options),
     lager:debug("running start commands in ~p", [PidRef]),
-
     {'ok', #state{node=Node
                  ,options=Options
                  ,start_cmds_pid_ref=PidRef
